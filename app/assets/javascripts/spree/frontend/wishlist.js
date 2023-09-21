@@ -2,7 +2,7 @@
   Spree.ready(function($) {
     $('#new_wished_product').on('submit', function() {
       var cart_quantity, selected_variant_id;
-      selected_variant_id = $('#product-variants input[type=radio]:checked').val();
+      selected_variant_id = $('#variant_id').val();
       if (selected_variant_id) {
         $('#wished_product_variant_id').val(selected_variant_id);
       }

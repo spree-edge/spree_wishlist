@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = SpreeWishlist.version
   s.summary     = 'Add wishlists to Spree'
   s.description = s.summary
-  s.required_ruby_version = '>= 2.1.0'
+  s.required_ruby_version = '>= 3.3.4'
 
   s.author      = 'John Dyer'
   s.email       = 'jdyer@spreecommerce.com'
@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_path  = 'lib'
   s.requirements << 'none'
 
-  spree_version = '>= 3.7.0', '< 5.0'
+  spree_version = '>= 4.4.8'
   s.add_runtime_dependency 'spree_core', spree_version
   s.add_runtime_dependency 'spree_api', spree_version
   s.add_runtime_dependency 'spree_extension'

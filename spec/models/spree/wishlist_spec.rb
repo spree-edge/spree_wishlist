@@ -80,7 +80,7 @@ RSpec.describe Spree::Wishlist, type: :model do
     it 'deletes associated wished products' do
       expect {
         wished_product.wishlist.destroy
-      }.to change(Spree::WishedProduct, :count).by(-1)
+      }.to change(Spree::WishedItem, :count).by(-1)
     end
   end
 end

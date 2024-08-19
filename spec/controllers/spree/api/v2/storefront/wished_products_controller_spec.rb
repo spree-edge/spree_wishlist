@@ -25,8 +25,8 @@ RSpec.describe Spree::Api::V2::Storefront::WishedProductsController, type: :requ
           variant_id: variant.id
         }
       }
-      expect(Spree::WishedProduct.count).to eq(1)
-      expect(Spree::WishedProduct.last.wishlist_id).to eq(other_wishlist.id)
+      expect(Spree::WishedItem.count).to eq(1)
+      expect(Spree::WishedItem.last.wishlist_id).to eq(other_wishlist.id)
     end
 
     it 'can not add product if missing variant' do

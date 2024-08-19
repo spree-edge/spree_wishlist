@@ -14,7 +14,6 @@ class Spree::WishlistsController < Spree::BaseController
 
   def index
     @wishlists = spree_current_user.wishlists
-    respond_with(@wishlist)
   end
 
   def edit
@@ -41,7 +40,10 @@ class Spree::WishlistsController < Spree::BaseController
     @wishlist = Spree::Wishlist.new wishlist_attributes
     @wishlist.user = spree_current_user
     @wishlist.save
-    respond_with(@wishlist)
+
+    respond_with do |format|
+      format.html { redirect_to wishlist_url(@wishlist) }
+    end
   end
 
   def destroy
@@ -54,7 +56,7 @@ class Spree::WishlistsController < Spree::BaseController
   private
 
   def wishlist_attributes
-    params.require(:wishlist).permit(:name, :is_default, :is_private)
+    params.require(:wishlist).permit(:name, :is_default, :is_private, :store_id)
   end
 
   # Isolate this method so it can be overwritten

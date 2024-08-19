@@ -1,4 +1,4 @@
-RSpec.describe Spree::WishedProduct, type: :model do
+RSpec.describe Spree::WishedItem, type: :model do
   describe '#quantity' do
     subject { build(:wished_product) }
 

@@ -5,12 +5,12 @@ class Spree::WishedItemsController < Spree::BaseController
   def create
     @wished_product = Spree::WishedItem.new(wished_product_attributes)
     @wishlist = spree_current_user.wishlist
+    @wishlist.update(store: current_store) unless @wishlist.store.present?
 
     if @wishlist.include? params[:wished_item][:variant_id]
       @wished_product = @wishlist.wished_items.detect { |wp| wp.variant_id == params[:wished_item][:variant_id].to_i }
     else
-      @wished_product.wishlist = spree_current_user.wishlist
-      @wished_product.save
+      @wished_product.update(wishlist: @wishlist)
     end
 
     respond_to do |format|

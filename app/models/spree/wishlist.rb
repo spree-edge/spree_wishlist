@@ -1,4 +1,5 @@
 class Spree::Wishlist < ActiveRecord::Base
+  alias_attribute :access_hash, :token
   belongs_to :user, class_name: Spree.user_class.to_s
   has_many :wished_products, dependent: :destroy
   before_create :set_access_hash

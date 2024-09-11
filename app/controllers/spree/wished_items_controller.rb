@@ -39,6 +39,6 @@ class Spree::WishedItemsController < Spree::BaseController
   private
 
   def wished_item_attributes
-    params.require(:wished_item).permit(:variant_id, :remark, :quantity)
+    params.require(:wished_item).permit(:variant_id, :remark, :quantity, :wishlist_id, :notify_me, :notified)
   end
 end

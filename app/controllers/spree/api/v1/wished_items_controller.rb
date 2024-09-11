@@ -36,10 +36,14 @@ module Spree
 
         def update
           @wished_item = Spree::WishedItem.find(params[:id])
+          authorize! :update, @wished_item
           @wished_item.update(wished_item_attributes)
+          @wishlist = @wished_item.wishlist
 
-          respond_with(@wished_item) do |format|
-            format.html { redirect_to wishlist_url(@wished_item.wishlist) }
+          if @wished_item.errors.empty?
+            respond_with(@wished_item, default_template: :show)
+          else
+            invalid_resource!(@wished_item)
           end
         end
 
@@ -53,10 +57,12 @@ module Spree
         private
 
         def wished_item_attributes
-          params.require(:wished_item).permit(:variant_id, :remark, :quantity, :wishlist_id, :notify_me, :notified)
+          params.require(:wished_item).permit(:variant_id, :wishlist_id, :remark)
         end
 
+
       end # eoc
+
     end
   end
 end

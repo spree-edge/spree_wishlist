@@ -13,8 +13,13 @@ class Spree::WishlistsController < Spree::BaseController
   end
 
   def index
+    if spree_current_user.nil?
+      flash[:error] = Spree.t(:login_to_create_a_wishlist)
+      return redirect_to login_path
+    end
+
     @wishlists = spree_current_user.wishlists
-    respond_with(@wishlist)
+    respond_with(@wishlists)
   end
 
   def edit

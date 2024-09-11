@@ -1,6 +1,6 @@
 module Spree::VariantDecorator
   def self.prepended(base)
-    base.has_many :wished_products, dependent: :destroy
+    base.has_many :wished_items, dependent: :destroy
   end
 end
 

@@ -1,6 +1,6 @@
 object @wishlist
 attributes *wishlist_attributes+[:id]
 
-child :wished_products => :wished_products do
-  attributes *wished_product_attributes
+child :wished_items => :wished_items do
+  attributes *wished_item_attributes
 end

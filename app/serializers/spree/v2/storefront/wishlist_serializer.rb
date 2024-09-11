@@ -7,7 +7,7 @@ module Spree
         attributes :access_hash, :name, :is_private, :is_default
 
         belongs_to :user
-        has_many :wished_products
+        has_many :wished_items
       end
     end
   end

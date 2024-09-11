@@ -1,13 +1,13 @@
 class Spree::Wishlist < ActiveRecord::Base
   alias_attribute :access_hash, :token
   belongs_to :user, class_name: Spree.user_class.to_s
-  has_many :wished_products, dependent: :destroy
+   has_many :wished_items, class_name: 'Spree::WishedItem', dependent: :destroy
   before_create :set_access_hash
 
   validates :name, presence: true
 
   def include?(variant_id)
-    wished_products.map(&:variant_id).include? variant_id.to_i
+    wished_items.map(&:variant_id).include? variant_id.to_i
   end
 
   def to_param

@@ -9,7 +9,7 @@ module SpreeWishlist
       Dir.glob(cache_klasses) do |klass|
         Rails.configuration.cache_classes ? require(klass) : load(klass)
       end
-      Spree::Ability.register_ability(WishlistAbility)
+      ::Spree::Ability.register_ability(WishlistAbility)
     end
 
     config.to_prepare(&method(:activate).to_proc)

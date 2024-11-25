@@ -35,7 +35,7 @@ RSpec.describe Spree::Api::V1::WishedProductsController, type: :request do
 
       # expect that the product will be added to api_users list, not the
       # the user whos id was passed.
-      expect(Spree::WishedProduct.last.wishlist.user_id).to eq(user.id)
+      expect(Spree::WishedItem.last.wishlist.user_id).to eq(user.id)
     end
 
     it 'will add not product to a different users list if api user is not an admin' do
@@ -61,8 +61,8 @@ RSpec.describe Spree::Api::V1::WishedProductsController, type: :request do
         }
       }
       expect(response).to have_http_status(:created)
-      expect(Spree::WishedProduct.count).to eq(1)
-      expect(Spree::WishedProduct.last.wishlist_id).to eq(other_wishlist.id)
+      expect(Spree::WishedItem.count).to eq(1)
+      expect(Spree::WishedItem.last.wishlist_id).to eq(other_wishlist.id)
     end
 
     it 'can not add product if missing variant' do
